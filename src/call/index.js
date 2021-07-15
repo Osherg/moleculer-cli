@@ -54,10 +54,22 @@ module.exports = {
 			//console.log(opts);
 			const broker = await connectHandler(opts);
 
-			const params = {};
-			const meta = {};
+			let params = {};
+			let meta = {};
 
 			Object.keys(opts).map(key => {
+				if (key === "jsonParams") {
+					params = {
+						...params,
+						...JSON.parse(opts[key])
+					};
+				}
+				if (key === "jsonMeta") {
+					meta = {
+						...meta,
+						...JSON.parse(opts[key])
+					};
+				}
 				if (key.startsWith("@"))
 					params[key.slice(1)] = opts[key];
 				if (key.startsWith("#"))
