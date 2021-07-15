@@ -7,4 +7,4 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-CMD ["node", "./bin/moleculer"]
+ENTRYPOINT ["node", "./bin/moleculer"]
