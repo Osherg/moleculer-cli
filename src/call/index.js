@@ -82,9 +82,8 @@ module.exports = {
 			}
 
 			const res = await broker.call(opts.actionName, params, { meta });
-			console.log(JSON.stringify(res, null, 4));
-
 			await broker.stop();
+			console.log(JSON.stringify(res, null, 4));
 		} catch(err) {
 			console.error("ERROR", err);
 			process.exit(1);
